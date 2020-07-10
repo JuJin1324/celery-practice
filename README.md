@@ -39,7 +39,7 @@ docker-compose.yml: client
 
 ### Broker
 Dockerfile: 없음  
-docker-compose.yml: mq (a.k.a message queue)    
+docker-compose.yml: broker    
 Redis 사용    
 
 ### Worker

@@ -31,19 +31,19 @@ docker logs celery-worker
 ```
 
 ## celery 개념 구성
-client -> broker -> worker
+Client -> Broker -> Worker
 
-### client
+### Client
 Dockerfile: Dockerfile-client  
 docker-compose.yml: client  
 
-### broker
+### Broker
 Dockerfile: 없음  
 docker-compose.yml: mq (a.k.a message queue)    
 Redis 사용    
 
-### server(worker)
-Dockerfile: Dockerfile-server  
-docker-compose.yml: server  
+### Worker
+Dockerfile: Dockerfile-worker  
+docker-compose.yml: worker  
 
 

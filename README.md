@@ -31,7 +31,7 @@ docker logs celery-worker
 ```
 
 ## celery 개념 구성
-client -> broker -> server(worker)
+client -> broker -> worker
 
 ### client
 Dockerfile: Dockerfile-client  

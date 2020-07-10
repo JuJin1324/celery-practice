@@ -1,0 +1,13 @@
+FROM python
+
+RUN pip install --upgrade pip || true \
+&& pip install celery \
+&& pip install 'celery[redis]' \
+&& pip install requests
+
+WORKDIR /home/app
+COPY tasks.py .
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
+
+#ENTRYPOINT celery -A tasks worker -l INFO
+ENTRYPOINT celery -A tasks worker -Q sqrt_queue,fibo_queue,webcrawler_queue -l INFO

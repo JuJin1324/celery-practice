@@ -1,0 +1,11 @@
+FROM python
+
+WORKDIR /home/app
+
+COPY task_dispatcher.py .
+
+RUN pip install --upgrade pip || true \
+&& pip install celery \
+&& pip install 'celery[redis]'
+
+ENTRYPOINT ["python", "task_dispatcher.py"]

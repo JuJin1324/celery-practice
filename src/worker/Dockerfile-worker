@@ -6,8 +6,12 @@ RUN pip install --upgrade pip || true \
 && pip install requests
 
 WORKDIR /home/app
+
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
+RUN chmod 755 wait-for-it.sh
+
 COPY tasks.py .
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
 
 #ENTRYPOINT celery -A tasks worker -l INFO
-ENTRYPOINT celery -A tasks worker -Q sqrt_queue,fibo_queue,webcrawler_queue -l INFO
+#ENTRYPOINT celery -A tasks worker -Q sqrt_queue,fibo_queue,webcrawler_queue -l INFO

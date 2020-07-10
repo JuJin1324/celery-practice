@@ -19,7 +19,8 @@ services:
       - bash
       - -c
       - |
-        ./wait-for-it.sh ${REDIS_HOST_NAME}:${REDIS_PORT} -t 10
+        ./wait-for-it.sh ${REDIS_HOST_NAME}:${REDIS_PORT} -t 10 \
+        -- celery -A tasks worker -Q sqrt_queue,fibo_queue,webcrawler_queue -l INFO
 
   client:
     container_name: celery-client
